@@ -140,10 +140,12 @@ function buildBookFromData(data) {
   );
   leaves.push(lastLeaf);
 
+  const fragment = document.createDocumentFragment();
   leaves.forEach((leaf, i) => {
     leaf.style.zIndex = String(leaves.length - i);
-    book.appendChild(leaf);
+    fragment.appendChild(leaf);
   });
+  book.appendChild(fragment);
 
   return leaves;
 }
