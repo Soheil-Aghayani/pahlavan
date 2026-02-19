@@ -276,9 +276,7 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
   const canvas = document.getElementById("particles");
   if (!canvas) return;
 
-  const reduce =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) return;
 
   const ctx = canvas.getContext("2d", { alpha: true });
