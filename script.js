@@ -1,4 +1,5 @@
 import albumData from "./data.js";
+import { clickZone, fmtTime } from "./utils.js";
 
 const book = document.getElementById("book");
 book.addEventListener("selectstart", (e) => e.preventDefault());
@@ -173,13 +174,6 @@ function flipPrev() {
   if (currentPage === 0) book.classList.remove("opened");
 }
 
-function clickZone(e, rect) {
-  const x = e.clientX - rect.left;
-  if (x > rect.width * 0.68) return "right";
-  if (x < rect.width * 0.32) return "left";
-  return "middle";
-}
-
 leaves.forEach((leaf, index) => {
   leaf.addEventListener("click", (e) => {
     const rect = leaf.getBoundingClientRect();
@@ -194,13 +188,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") flipNext();
   if (e.key === "ArrowLeft") flipPrev();
 });
-
-function fmtTime(sec) {
-  if (!isFinite(sec) || sec < 0) return "0:00";
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return m + ":" + String(s).padStart(2, "0");
-}
 
 let currentAudio = null;
 let currentBtn = null;
