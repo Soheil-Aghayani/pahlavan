@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { clickZone, fmtTime, getParticleCount } from './utils.js';
+import { clickZone, fmtTime, getParticleCount, randRange } from './utils.js';
 
 test('clickZone - right zone boundary', () => {
   const rect = { left: 0, width: 100 };
@@ -101,4 +101,20 @@ test('getParticleCount - rounding', () => {
   // Area = 1267000.
   // e.g. 1267 * 1000
   assert.strictEqual(getParticleCount(1267, 1000), 91);
+});
+
+test('randRange - basic functionality', () => {
+  const r = randRange(10, 20);
+  assert.ok(r >= 10);
+  assert.ok(r < 20);
+});
+
+test('randRange - float values', () => {
+  const r = randRange(1.5, 2.5);
+  assert.ok(r >= 1.5);
+  assert.ok(r < 2.5);
+});
+
+test('randRange - min equals max', () => {
+  assert.strictEqual(randRange(10, 10), 10);
 });
