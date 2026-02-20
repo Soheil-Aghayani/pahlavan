@@ -1,5 +1,5 @@
 import albumData from "./data.js";
-import { clickZone, fmtTime } from "./utils.js";
+import { clickZone, fmtTime, getParticleCount } from "./utils.js";
 
 const book = document.getElementById("book");
 book.addEventListener("selectstart", (e) => e.preventDefault());
@@ -343,10 +343,10 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
   }
 
   resize();
-  seed(Math.max(90, Math.round((window.innerWidth * window.innerHeight) / 14000)));
+  seed(getParticleCount(window.innerWidth, window.innerHeight));
   window.addEventListener("resize", () => {
     resize();
-    seed(Math.max(90, Math.round((window.innerWidth * window.innerHeight) / 14000)));
+    seed(getParticleCount(window.innerWidth, window.innerHeight));
   });
 
   requestAnimationFrame(step);

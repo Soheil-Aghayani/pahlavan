@@ -11,3 +11,7 @@ export function fmtTime(sec) {
   const s = Math.floor(sec % 60);
   return m + ":" + String(s).padStart(2, "0");
 }
+
+export function getParticleCount(width, height) {
+  return Math.max(90, Math.round((width * height) / 14000));
+}

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { clickZone, fmtTime } from './utils.js';
+import { clickZone, fmtTime, getParticleCount } from './utils.js';
 
 test('clickZone - right zone boundary', () => {
   const rect = { left: 0, width: 100 };
@@ -81,4 +81,24 @@ test('fmtTime - edge cases', () => {
   assert.strictEqual(fmtTime(-1), '0:00');
   assert.strictEqual(fmtTime(NaN), '0:00');
   assert.strictEqual(fmtTime(Infinity), '0:00');
+});
+
+test('getParticleCount - basic calculation', () => {
+  // 1400 * 1000 = 1400000. 1400000 / 14000 = 100.
+  assert.strictEqual(getParticleCount(1400, 1000), 100);
+
+  // 1400 * 100 = 140000. 140000 / 14000 = 10. Max(90, 10) = 90.
+  assert.strictEqual(getParticleCount(1400, 100), 90);
+});
+
+test('getParticleCount - minimum value', () => {
+  assert.strictEqual(getParticleCount(0, 0), 90);
+  assert.strictEqual(getParticleCount(10, 10), 90);
+});
+
+test('getParticleCount - rounding', () => {
+  // 1267000 / 14000 = 90.5 -> rounds to 91
+  // Area = 1267000.
+  // e.g. 1267 * 1000
+  assert.strictEqual(getParticleCount(1267, 1000), 91);
 });
