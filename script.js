@@ -1,5 +1,5 @@
 import albumData from "./data.js";
-import { clickZone, fmtTime, getParticleCount } from "./utils.js";
+import { clickZone, fmtTime, getParticleCount, randRange } from "./utils.js";
 
 const book = document.getElementById("book");
 book.addEventListener("selectstart", (e) => e.preventDefault());
@@ -297,19 +297,17 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  function r(a, b) { return a + Math.random() * (b - a); }
-
   function seed(n) {
     pts = [];
     for (let i = 0; i < n; i += 1) {
       pts.push({
-        x: r(0, w),
-        y: r(0, h),
-        s: r(0.2, 1.2),
-        vx: r(-0.08, 0.08),
-        vy: r(-0.22, -0.06),
-        a: r(0.05, 0.22),
-        t: r(0, Math.PI * 2)
+        x: randRange(0, w),
+        y: randRange(0, h),
+        s: randRange(0.2, 1.2),
+        vx: randRange(-0.08, 0.08),
+        vy: randRange(-0.22, -0.06),
+        a: randRange(0.05, 0.22),
+        t: randRange(0, Math.PI * 2)
       });
     }
   }
@@ -328,7 +326,7 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
 
       if (p.y < -20) {
         p.y = h + 20;
-        p.x = r(0, w);
+        p.x = randRange(0, w);
       }
       if (p.x < -30) p.x = w + 30;
       if (p.x > w + 30) p.x = -30;

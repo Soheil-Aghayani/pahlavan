@@ -15,3 +15,7 @@ export function fmtTime(sec) {
 export function getParticleCount(width, height) {
   return Math.max(90, Math.round((width * height) / 14000));
 }
+
+export function randRange(min, max) {
+  return min + Math.random() * (max - min);
+}
