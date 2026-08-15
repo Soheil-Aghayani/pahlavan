@@ -1,45 +1,54 @@
-# 📖 Pahlavan: A Digital Musical Manuscript
-
-**Pahlavan** is an interactive, 3-dimensional digital album that bridges ancient Persian mythology with modern web technology. Inspired by the "Pahlavani" tradition and the epic history of Iran, this project invites users to explore a musical journey through the pages of a virtual ancient manuscript.
-
-## ✨ Key Features
-
-* **3D Interactive Book Engine:** A custom-built engine using advanced CSS 3D transforms (`perspective`, `rotateY`) to simulate a realistic, tactile page-flipping experience.
-* **Minimalist Tactical Audio Player:** A bespoke audio interface featuring a centered "Play/Pause" control and a seek bar that fills with an animated golden gradient as the track progresses.
-* **Atmospheric Particle System:** A high-performance **Canvas API** implementation that renders floating golden dust and embers, creating a cinematic, mystical environment.
-* **Dynamic Content Management:** Fully data-driven architecture; all track metadata, stories, and assets are managed via a central `data.js` file for seamless updates.
-* **Immersive Backgrounds:** Designed to support cinematic, high-contrast environments that enhance the 3D depth of the manuscript.
-
-## 🛠 Tech Stack
-
-* **HTML5 & CSS3:** Leverages CSS variables, 3D perspectives, and custom transitions for the UI.
-* **Vanilla JavaScript (ES6+):** Handles the core book logic, real-time audio synchronization, and state management without the need for external libraries.
-* **Canvas API:** Powers the dynamic particle background.
-* **Typography:** Features **Cinzel** and **Charm** via Google Fonts to evoke a classical, hand-inked manuscript aesthetic.
-
-## 🚀 Getting Started
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Soheil-Aghayani/pahlavan.git](https://github.com/Soheil-Aghayani/pahlavan.git)
-    ```
-2.  **Launch the experience:**
-    Simply open `index.html` in any modern web browser (Chrome, Safari, or Firefox recommended).
-
-## 📂 Project Structure
-
-* `index.html`: The core application container and entry point.
-* `style.css`: The "engine" of the visuals, containing 3D transformations and the minimalist player design.
-* `script.js`: The "brain" of the project, managing page logic, audio sync, and animations.
-* `data.js`: The centralized database for the album's tracks, stories, and metadata.
-* `assets/`: Storage for high-resolution images (`images/`) and track audio files (`songs/`).
-
-## 👤 About the Developer
-
-**Soheil Aghayani**
-* 🎓 **M.Sc. in Environmental Engineering** – University of Tehran
-* 💻 **Interests**: Python Programming, Web Development, and Classical Persian Literature
-* 📧 **Email**: soheil.aghayani@ut.ac.ir
-* 🔗 **LinkedIn**: [linkedin.com/in/AgSeyl](https://linkedin.com/in/AgSeyl)
+<div align="center">
+  <h1>PAHLAVAN</h1>
+  <p><strong>A digital musical manuscript inspired by Persian mythology, epic storytelling, and the theatre of the web.</strong></p>
+  <p>
+    <a href="https://soheil-aghayani.github.io/pahlavan/"><strong>Enter the manuscript →</strong></a>
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/3D_book-CSS_transforms-0B2F36?style=for-the-badge" alt="CSS 3D book">
+    <img src="https://img.shields.io/badge/web_audio-immersive-1D6B70?style=for-the-badge" alt="Web audio">
+    <img src="https://img.shields.io/badge/vanilla_JS-E5A24B?style=for-the-badge&labelColor=0B2F36" alt="Vanilla JavaScript">
+  </p>
+</div>
 
 ---
+
+## The idea
+
+Pahlavan is an interactive album shaped like an ancient manuscript. Visitors turn pages, discover tracks, read short stories, and move through a dark, cinematic world of dust, embers, and music.
+
+It is an experiment in making a web page feel like an object.
+
+## The experience
+
+- A 3D page-flipping book built with CSS transforms
+- Data-driven track metadata and story content
+- A focused audio player with progress and seek controls
+- Canvas particles for floating dust and embers
+- Cinematic imagery, custom type, and high-contrast reading surfaces
+- No framework or build step
+
+## Project map
+
+| File | Role |
+| --- | --- |
+| index.html | Application shell and manuscript structure |
+| style.css | 3D layout, typography, transitions, and atmosphere |
+| script.js | Page logic, audio synchronisation, and interaction |
+| data.js | Track, story, and album metadata |
+| assets/images/ | Covers, backgrounds, and page artwork |
+| assets/songs/ | Album audio tracks |
+
+## Run locally
+
+~~~bash
+git clone https://github.com/Soheil-Aghayani/pahlavan.git
+cd pahlavan
+python -m http.server 8080
+~~~
+
+Then open http://localhost:8080.
+
+<div align="center">
+  <sub>Ancient atmosphere, modern browser primitives.</sub>
+</div>
