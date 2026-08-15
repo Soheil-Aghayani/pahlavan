@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="assets/readme-hero.svg" alt="Pahlavan visual hero" width="100%">
+
   <h1>PAHLAVAN</h1>
   <p><strong>A digital musical manuscript inspired by Persian mythology, epic storytelling, and the theatre of the web.</strong></p>
   <p>
