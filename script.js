@@ -30,7 +30,11 @@ function buildLeftTrackPage(track, index, total) {
   const artFrame = makeEl("div", "art-frame");
   const img = makeEl("img", "art-img");
   img.alt = `${track.title} cover`;
-  img.src = fileUrl("assets/images/", track.image || "cover.jpg");
+  img.width = 480;
+  img.height = 480;
+  img.loading = index < 2 ? "eager" : "lazy";
+  img.decoding = "async";
+  img.src = fileUrl("assets/images/", (track.image || "cover.jpg").replace(/\.(jpg|jpeg|png)$/i, ".webp"));
   artFrame.appendChild(img);
 
   const player = makeEl("div", "music-player-ui");
@@ -39,6 +43,8 @@ function buildLeftTrackPage(track, index, total) {
   const btn = makeEl("button", "play-trigger");
   btn.type = "button";
   btn.textContent = "▶";
+  btn.setAttribute("aria-label", `Play ${track.title}`);
+  btn.title = `Play ${track.title}`;
 
   const bar = makeEl("div", "player-bar");
   const seek = makeEl("input", "seek");
@@ -47,6 +53,7 @@ function buildLeftTrackPage(track, index, total) {
   seek.max = "100";
   seek.value = "0";
   seek.step = "0.1";
+  seek.setAttribute("aria-label", `Seek ${track.title}`);
 
   const time = makeEl("div", "time");
   const cur = makeEl("span", "tcur");
@@ -60,8 +67,8 @@ function buildLeftTrackPage(track, index, total) {
 
   const audio = makeEl("audio", "");
   audio.id = `audio-${track.id}`;
-  audio.preload = "metadata";
-  audio.src = fileUrl("assets/songs/", track.audio);
+  audio.preload = "none";
+  audio.dataset.src = fileUrl("assets/songs/", track.audio);
 
   wrap.append(head, title, artFrame, player, audio);
   return wrap;
@@ -238,7 +245,6 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
     if (currentAudio === audio) {
       currentAudio = null;
       currentBtn = null;
-      currentDisk = null;
     }
   });
 
@@ -248,18 +254,19 @@ document.querySelectorAll(".music-player-ui").forEach((player) => {
     if (currentAudio && currentAudio !== audio) stopCurrent();
 
     if (audio.paused) {
+      if (!audio.getAttribute("src")) {
+        audio.src = audio.dataset.src;
+      }
       audio.play().catch(() => {});
       btn.textContent = "⏸";
       currentAudio = audio;
       currentBtn = btn;
-      currentDisk = disk;
     } else {
       audio.pause();
       btn.textContent = "▶";
       if (currentAudio === audio) {
         currentAudio = null;
         currentBtn = null;
-        currentDisk = null;
       }
     }
   });
