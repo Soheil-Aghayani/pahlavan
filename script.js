@@ -30,11 +30,11 @@ function buildLeftTrackPage(track, index, total) {
   const artFrame = makeEl("div", "art-frame");
   const img = makeEl("img", "art-img");
   img.alt = `${track.title} cover`;
-  img.width = 457;
-  img.height = 639;
+  img.width = 480;
+  img.height = 480;
   img.loading = index < 2 ? "eager" : "lazy";
   img.decoding = "async";
-  img.src = fileUrl("assets/images/", track.image || "cover.jpg");
+  img.src = fileUrl("assets/images/", (track.image || "cover.jpg").replace(/\.(jpg|jpeg|png)$/i, ".webp"));
   artFrame.appendChild(img);
 
   const player = makeEl("div", "music-player-ui");

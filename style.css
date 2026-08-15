@@ -18,7 +18,7 @@ body{
   justify-content:center;
   align-items:center;
   background:#050505;
-  background-image: url('./assets/images/my-bg.jpg');
+  background-image: url('./assets/images/my-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,7 +97,7 @@ body{
 
 .cover.front.cover-front{
   background-color:var(--dark-leather);
-  background-image:url("./assets/images/book-cover.png");
+  background-image:url("./assets/images/book-cover.webp");
   background-size:100% 100%;
   background-position:center;
   box-shadow:inset 5px 0 10px rgba(0,0,0,0.6), 10px 10px 30px rgba(0,0,0,0.7);
@@ -106,7 +106,7 @@ body{
 
 .cover-back{
   background-color:var(--dark-leather);
-  background-image:url("./assets/images/book-back-cover.png");
+  background-image:url("./assets/images/book-back-cover.webp");
   background-size:100% 100%;
   background-position:center;
   box-shadow:inset -5px 0 10px rgba(0,0,0,0.6), -10px 10px 30px rgba(0,0,0,0.7);
